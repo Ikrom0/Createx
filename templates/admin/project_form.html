@@ -1,0 +1,225 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="admin-page">
+  <div class="admin-page__header">
+    <div>
+      <h1 class="admin-page__title">{{ page_title }}</h1>
+      <p>{{ page_subtitle }}</p>
+    </div>
+  </div>
+  
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    action="{% if project %}{{ url_for('admin.edit_project', slug=project.slug) }}{% else %}{{ url_for('admin.create_project') }}{% endif %}"
+    data-project-form
+    class="admin-form"
+  >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  
+    <!-- Basic information -->
+  
+    <section class="admin-form__section">
+      <h2 class="admin-form__title">Basic information</h2>
+      
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Title*</span>
+          <input
+            type="text"
+            name="title"
+            class="form-input"
+            placeholder="Your title"
+            value="{{ title if title is defined else (project.title if project else '') }}"
+          >
+        </label>
+
+        <label>
+          {% set subtitle = subtitle if subtitle is defined else (project.subtitle if project else '') %}
+          <span class="form-label">Subtitle*</span>
+          <div class="form-select-wrapper">
+            <select name="subtitle" class="form-select">
+              <option value="" disabled {% if not subtitle %}selected{% endif %}>Select Subtitle</option>
+              <option value="Apartments Flats" {% if subtitle == "Apartments Flats" %}selected{% endif %}>
+                Apartments & Flats
+              </option>
+              <option value="Business Centers" {% if subtitle == "Business Centers" %}selected{% endif %}>
+                Business Centers
+              </option>
+              <option value="Private Houses" {% if subtitle == "Private Houses" %}selected{% endif %}>
+                Private Houses
+              </option>
+              <option value="Stores Malls" {% if subtitle == "Stores Malls" %}selected{% endif %}>
+                Stores & Malls
+              </option>
+            </select>
+          </div>
+        </label>
+      </div>
+  
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Card image*</span>
+          <input type="file" name="card_img" accept="image/*" class="form-file">
+        </label>
+        
+        <label>
+          {% set category = category if category is defined else (project.category if project else '') %}
+          <span class="form-label">Category*</span>
+          <div class="form-select-wrapper">
+            <select name="category" class="form-select">
+              <option value="" disabled {% if not category %}selected{% endif %}>Select Category</option>
+              <option value="Construction" {% if category == "Construction" %}selected{% endif %}>
+                Construction
+              </option>
+              <option value="Project Development" {% if category == "Project Development" %}selected{% endif %}>
+                Project Development
+              </option>
+              <option value="Interior Design" {% if category == "Interior Design" %}selected{% endif %}>
+                Interior Design
+              </option>
+              <option value="Repairs" {% if category == "Repairs" %}selected{% endif %}>
+                Repairs
+              </option>
+            </select>
+          </div>
+        </label>
+      </div>
+  
+    </section>
+
+    <!-- Images -->
+  
+    <section class="admin-form__section">
+      <h2 class="admin-form__title">Images</h2>
+  
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Small image*</span>
+          <input type="file" name="image_sm" accept="image/*" class="form-file">
+        </label>
+        
+        <label>
+          <span class="form-label">Large image*</span>
+          <input type="file" name="image_lg" accept="image/*" class="form-file">
+        </label>
+      </div>
+    </section>
+  
+    <!-- Project details -->
+  
+    <section class="admin-form__section">
+      <h2 class="admin-form__title">Project details</h2>
+  
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Client*</span>
+          <input
+            type="text"
+            name="client"
+            class="form-input"
+            placeholder="Your client"
+            value="{{ client if client is defined else (project.client if project else '') }}"
+          >
+        </label>
+        
+        <label>
+          <span class="form-label">Architect*</span>
+          <input
+            type="text"
+            name="architect"
+            class="form-input"
+            placeholder="Your architect"
+            value="{{ architect if architect is defined else (project.architect if project else '') }}"
+          >
+        </label>
+      </div>
+  
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Size*</span>
+          <input
+            type="text"
+            name="size"
+            class="form-input"
+            placeholder="Your size"
+            value="{{ size if size is defined else (project.size if project else '') }}"
+          >
+        </label>
+        
+        <label>
+          <span class="form-label">Price*</span>
+          <input
+            type="text"
+            name="price"
+            class="form-input"
+            placeholder="Your price"
+            value="{{ price if price is defined else (project.price if project else '') }}"
+          >
+        </label>
+      </div>
+
+      <div class="admin-form__row">
+        <label>
+          <span class="form-label">Date*</span>
+          <input
+            type="date"
+            name="date"
+            class="form-input"
+            value="{{ date if date is defined else (project.date if project else '') }}"
+          >
+        </label>
+
+        <label>
+          {% set city = city if city is defined else (project.city if project else '') %}
+          <span class="form-label">City*</span>
+          <div class="form-select-wrapper">
+            <select name="city" class="form-select">
+              <option value="" disabled {% if not city %}selected{% endif %}>Select City</option>
+              <option value="New York" {% if city == "New York" %}selected{% endif %}>New York</option>
+              <option value="New Jersey" {% if city == "New Jersey" %}selected{% endif %}>New Jersey</option>
+              <option value="San Francisco" {% if city == "San Francisco" %}selected{% endif %}>San Francisco</option>
+            </select>
+          </div>
+        </label>
+      </div>
+
+      <div class="admin-form__row admin-form__row--lg">
+        <label>
+          <span class="form-label">Address*</span>
+          <input
+            type="text"
+            name="address"
+            class="form-input"
+            placeholder="Your address"
+            value="{{ address if address is defined else (project.address if project else '') }}"
+          >
+        </label>
+      </div>
+
+      <div class="admin-form__row admin-form__row--lg">
+        <label>
+          <span class="form-label">Goal*</span>
+          <textarea name="goal" placeholder="Your goal..." class="form-textarea form-textarea--admin">{{ goal if goal is defined else (project.goal if project else '') }}</textarea>
+        </label>
+      </div>
+  
+    </section>
+  
+    <!-- Actions -->
+  
+    <div class="admin-form__actions">
+      <a href="{{ url_for('admin.projects') }}" class="btn btn--clear btn--sm">
+        Cancel
+      </a>
+  
+      <button type="submit" class="btn btn--filled btn--sm">
+        {% if project %}Save changes{% else %}Create project{% endif %}
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+
+h1, h2, h3, h4, h5 {
+  color: $gray-900;
+  font-weight: 700;
+}
+
+h1, h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: calc(1.575rem + 3.9vw);
+  letter-spacing: 1px;
+
+  @include bp(lg) {
+    font-size: 72px;
+  }
+}
+
+h2 {
+  font-size: calc(1.4125rem + 1.95vw);
+
+  @include bp(lg) {
+    font-size: 46px;
+  }
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw);
+
+  @include bp(lg) {
+    font-size: 28px;
+  }
+}
+
+h4 {
+  font-size: 20px;
+}
+
+::selection {
+  background: rgba($primary, 0.22);
+}
+
+a {
+  transition: color .2s ease;
+}

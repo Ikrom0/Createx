@@ -1,0 +1,22 @@
+@use '../base/variables' as *;
+
+
+[data-simplebar] {
+  
+  .simplebar-track {
+    background-color: $gray-300;
+    border-radius: 4px;
+  }
+
+  .simplebar-scrollbar::before {
+    inset: 0;
+    opacity: 1 !important;
+    border-radius: 4px;
+    background-color: $gray-500;
+  }
+
+  .simplebar-track.simplebar-horizontal {
+    height: 3px;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block body %}
+<section class="hero hero--contacts">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">Contacts</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">Contacts</h1>
+      <p class="hero__text">Contact us for all your construction needs. We always welcome any questions and comments.</p>
+    </div>
+  </div>
+</section>
+<section class="contacts">
+  <div class="container">
+    <header class="section-header">
+      <h2>Contact us</h2>
+      <p class="section-subtitle">Please complete the form. Detailed information will help us to make a tuned offer.</p>
+    </header>
+    <div class="contacts__grid">
+      <div class="contacts__img">
+        <img src="{{ url_for('static', filename='images/others/review.jpg') }}" alt="" loading="lazy" width="495" height="586" class="rounded-4">
+      </div>
+      <form class="contacts__form" method="POST" action="/request" data-request-form>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="contacts__fields">
+          <input type="hidden" name="type" value="contact">
+          <label class="contacts__field">
+            <span class="form-label form-label--lg">Name*</span>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              class="form-input form-input--lg"/>
+          </label>
+          <label class="contacts__field">
+            <span class="form-label form-label--lg">I am interested in</span>
+            <div class="form-select-wrapper">
+              <select name="category" class="form-select form-select--lg">
+                <option value="Interior Design" selected>Interior Design</option>
+                <option value="Project Development">Project Development</option>
+                <option value="Construction">Construction</option>
+                <option value="Repairs">Repairs</option>
+              </select>
+            </div>
+          </label>
+          <label class="contacts__field">
+          <span class="form-label form-label--lg">Phone*</span>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Your phone number"
+            class="form-input form-input--lg"/>
+          </label>
+          <label class="contacts__field">
+            <span class="form-label form-label--lg">Location*</span>
+            <div class="form-select-wrapper">
+              <select name="city" class="form-select form-select--lg">
+                <option value="" selected disabled>Choose your location</option>
+                <option value="New York">New York</option>
+                <option value="New Jersey">New Jersey</option>
+                <option value="San Francisco">San Francisco</option>
+              </select>
+            </div>
+          </label>
+          <label class="contacts__field">
+            <span class="form-label form-label--lg">Email</span>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your working email"
+              class="form-input form-input--lg"
+            />
+          </label>
+          <div class="contacts__field">
+            <label for="contact-phone" class="form-label form-label--lg">Preferred contact method</label>
+            <div class="contacts__form-radios">
+              <label class="contacts__form-radio">
+                <input type="radio" name="contact" value="Phone" id="contact-phone" checked class="form-radio">
+                <span class="form-label form-label--inline">Phone</span>
+              </label>
+              <label class="contacts__form-radio">
+                <input type="radio" name="contact" value="Email" id="contact-email" class="form-radio">
+                <span class="form-label form-label--inline">Email</span>
+              </label>
+              <label class="contacts__form-radio">
+                <input type="radio" name="contact" value="Telegram" id="contact-telegram" class="form-radio">
+                <span class="form-label form-label--inline">Telegram</span>
+              </label>
+            </div>
+          </div>
+          <label class="contacts__field contacts__field--lg">
+            <span class="form-label form-label--lg">Message*</span>
+            <textarea
+              name="message"
+              placeholder="Your message"
+              class="form-textarea form-textarea--contact"></textarea>
+          </label>
+        </div>
+        <div class="contacts__form-bottom">
+          <label class="form-checkbox-item">
+            <input type="checkbox" name="communications__agreement" class="form-checkbox-input" required/>
+            <p class="form-label form-label--inline">I agree to receive communications from Createx Construction Bureau.</p>
+          </label>
+          <button type="submit" class="btn btn--filled btn--md">send request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="offices">
+  <div class="container">
+    <header class="section-header">
+      <h2>Our offices</h2>
+      <p class="section-subtitle">Give us a call, send us a note or visit our office. We can’t wait to hear from you!</p>
+    </header>
+    <div class="offices__contacts">
+      <address class="offices__contact">
+        <div class="offices__contact-inner">
+          <h3 class="offices__contact-title">New York, USA</h3>
+          <p class="offices__contact-address">8502 Preston Rd. Inglewood, New York 98380</p>
+          <a href="#!" class="offices__contact-link">See on the map</a>
+
+          <ul class="offices__details">
+            <li class="offices__detail">
+              <span class="offices__detail-label">Call:</span>
+              <a href="tel:+(405)5550128" class="offices__detail-link">(405) 555-0128</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Email:</span>
+              <a href="mailto:hello@createx.com" class="offices__detail-link">hello@createx.com</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Schedule:</span>
+              <span class="offices__detail-text">Mon - Fri 9:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </address>
+
+      <address class="offices__contact">
+        <div class="offices__contact-inner">
+          <h3 class="offices__contact-title">New Jersey, USA</h3>
+          <p class="offices__contact-address">2464 Royal Ln. Mesa, New Jersey 45463</p>
+          <a href="#!" class="offices__contact-link">See on the map</a>
+
+          <ul class="offices__details">
+            <li class="offices__detail">
+              <span class="offices__detail-label">Call:</span>
+              <a href="tel:+(808)5550111" class="offices__detail-link">(808) 555-0111</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Email:</span>
+              <a href="mailto:hello@createx.com" class="offices__detail-link">hello@createx.com</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Schedule:</span>
+              <span class="offices__detail-text">Mon - Fri 9:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </address>
+
+      <address class="offices__contact">
+        <div class="offices__contact-inner">
+          <h3 class="offices__contact-title">San Francisco, USA</h3>
+          <p class="offices__contact-address">8502 Preston Rd. Inglewood, San Francisco 98380</p>
+          <a href="#!" class="offices__contact-link">See on the map</a>
+
+          <ul class="offices__details">
+            <li class="offices__detail">
+              <span class="offices__detail-label">Call:</span>
+              <a href="tel:+(505)5550125" class="offices__detail-link">(505) 555-0125</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Email:</span>
+              <a href="mailto:hello@createx.com" class="offices__detail-link">hello@createx.com</a>
+            </li>
+            <li class="offices__detail">
+              <span class="offices__detail-label">Schedule:</span>
+              <span class="offices__detail-text">Mon - Fri 9:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </address>
+    </div>
+  </div>
+</section>
+<section class="follow">
+  <div class="container">
+    <h2 class="follow__title">Find us at</h2>
+    <div class="socials follow__socials">
+      <a href="#!" aria-label="WhatsApp">
+        <svg width="32" height="32" aria-hidden="true">
+          <use href="#icon-whatsapp"></use>
+        </svg>
+      </a>
+      <a href="#!" aria-label="Messanger">
+        <svg width="32" height="32" aria-hidden="true">
+          <use href="#icon-messanger"></use>
+        </svg>
+      </a>
+      <a href="#!" aria-label="Facebook">
+        <svg width="32" height="32" aria-hidden="true"> 
+          <use href="#icon-facebook"></use>
+        </svg>
+      </a>
+      <a href="#!" aria-label="Twitter">
+        <svg width="32" height="32" aria-hidden="true">
+          <use href="#icon-twitter"></use>
+        </svg>
+      </a>
+      <a href="#!" aria-label="Youtube">
+        <svg width="32" height="32" aria-hidden="true">
+          <use href="#icon-youtube"></use>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+{% endblock %}

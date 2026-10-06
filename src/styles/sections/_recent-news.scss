@@ -1,0 +1,48 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.recent-news {
+  padding: 48px 0 72px;
+
+  &--article {
+    background: $gray-200;
+  }
+
+  @include bp(sm) {
+    padding-top: 72px;
+  }
+
+  @include bp(md) {
+    padding: 120px 0;
+  }
+}
+
+.recent-news__grid {
+  display: grid;
+  gap: 30px;
+
+  @include bp(sm) {
+    grid-template-columns: repeat(12, 1fr);
+
+    .news-card {
+      grid-column: span 6;
+
+      &--lg {
+        grid-row: span 2;
+      }
+    }
+  }
+
+  @include bp(md) {
+    
+    .news-card {
+      grid-column: span 5;  
+
+      &--lg {
+        grid-column: span 7;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,28 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.error-page {
+  min-height: 90vh;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.error-page__code {
+  margin-bottom: 16px;
+  font-size: 120px;
+  line-height: 1;
+
+  @include bp(sm) {
+    font-size: 160px;
+  }
+}
+
+.error-page__title {
+  margin-bottom: 16px;
+}
+
+.error-page__text {
+  margin-bottom: 32px;
+  color: $gray-600;
+}

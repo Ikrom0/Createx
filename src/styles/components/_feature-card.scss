@@ -1,0 +1,61 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.feature-cards {
+  display: grid;
+  row-gap: 30px;
+
+  @include bp(xs) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  padding: 72px 24px 0;
+  text-align: center;
+  background-position: top center;
+  background-size: 48px;
+  background-repeat: no-repeat;
+
+  position: relative;
+
+  @include bp(sm) {
+    &:not(:last-child) {
+      &::after { @include vertical-divider; }
+    }
+  }
+
+  @include bp(md) {
+    padding-inline: 48px;
+  }
+
+  &--quality { background-image: url("@images/icons/ic-like.png"); }
+
+  &--safety { background-image: url("@images/icons/ic-hand.png"); }
+
+  &--comfort { background-image: url("@images/icons/ic-slippers.png"); }
+
+  
+  &--training { background-image: url("@images/icons/ic-brain.png"); }
+
+  &--growth { background-image: url("@images/icons/ic-success.png"); }
+
+  &--salary { background-image: url("@images/icons/ic-budget.png"); }
+
+  
+  &--contact { background-image: url("@images/icons/ic-contract.png"); }
+
+  &--workers { background-image: url("@images/icons/ic-helmet.png"); }
+
+  &--control { background-image: url("@images/icons/ic-camera.png"); }
+
+}
+
+.feature-card-title {
+  margin-bottom: 8px;
+}
+
+.feature-card-text {
+  color: $gray-700;
+}

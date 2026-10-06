@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}
+Available positions
+{% endblock %}
+
+{% block body %}
+<section class="hero hero--career">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item">
+            <a href="{{ url_for('about') }}" class="breadcrumbs-link">About Us</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">Available Positions</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">AVAILABLE POSITIONS</h1>
+      <p class="hero__text">Build your career with Createx Construction Bureau.</p>
+    </div>
+  </div>
+</section>
+<section class="career">
+  <div class="container">
+    <h2 class="visually-hidden">Career</h2>
+    <div class="career__content">
+      <div class="career__vacancies">
+        <div class="career__vacancy">  
+          <div class="career__vacancy-content">
+            <div class="career__vacancy-meta">
+              <span class="career__vacancy-location">New York</span>
+              <span class="career__vacancy-time">Full Time</span>
+            </div>
+            <h4 class="career__vacancy-position">Heavy Equipment Operator</h4>
+          </div>
+          <button type="button" class="btn btn--sm btn--clear career__vacancy-btn" data-modal-open="careerCv">Apply now</button>
+        </div>
+        <div class="career__vacancy">
+          <div class="career__vacancy-content">
+            <div class="career__vacancy-meta">
+              <span class="career__vacancy-location">San Francisco</span>
+              <span class="career__vacancy-time">Full Time</span>
+            </div>
+            <h4 class="career__vacancy-position">Financial Compliance Analyst</h4>
+          </div>
+          <button type="button" class="btn btn--sm btn--clear career__vacancy-btn" data-modal-open="careerCv">Apply now</button>
+        </div>
+        <div class="career__vacancy">
+          <div class="career__vacancy-content">
+            <div class="career__vacancy-meta">
+              <span class="career__vacancy-location">New Jersey</span>
+              <span class="career__vacancy-time">Full Time</span>
+            </div>
+            <h4 class="career__vacancy-position">Project Manager - Buildings</h4>
+          </div>
+          <button type="button" class="btn btn--sm btn--clear career__vacancy-btn" data-modal-open="careerCv">Apply now</button>
+        </div>
+        <div class="career__vacancy">
+          <div class="career__vacancy-content">
+            <div class="career__vacancy-meta">
+              <span class="career__vacancy-location">New York</span>
+              <span class="career__vacancy-time">Part Time</span>
+            </div>
+            <h4 class="career__vacancy-position">Environment Specialist</h4>
+          </div>
+          <button type="button" class="btn btn--sm btn--clear career__vacancy-btn" data-modal-open="careerCv">Apply now</button>
+        </div>
+        <div class="career__vacancy">
+          <div class="career__vacancy-content">
+            <div class="career__vacancy-meta">
+              <span class="career__vacancy-location">New York</span>
+              <span class="career__vacancy-time">Full Time</span>
+            </div>
+            <h4 class="career__vacancy-position">Accountant</h4>
+          </div>
+          <button type="button" class="btn btn--sm btn--clear career__vacancy-btn" data-modal-open="careerCv">Apply now</button>
+        </div>
+      </div>
+      <div class="career__cta">
+        <h3 class="career__cta-title">Didn’t find what you were looking for?</h3>
+        <p class="career__cta-text">Send your CV or subscribe to our newsletter to receive information about new vacancies.</p>
+        <div class="career__cta-buttons">
+          <button type="button"class="btn btn--md btn--clear" data-modal-open="careerSubscribe">subscribe</button>
+          <button type="button" class="btn btn--md btn--filled" data-modal-open="careerCv">send cv</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="benefits">
+  <div class="container">
+    <header class="section-header">
+      <h2>Employee benefits</h2>
+      <p class="section-subtitle">There’s always room for talent.</p>
+    </header>
+    <div class="feature-cards">
+      <div class="feature-card feature-card--training">
+        <h4 class="feature-card-title">Training</h4>
+        <p class="feature-card-text">Culpa nostrud commodo ea consequat aliquip reprehenderit. Veniam velit nostrud aliquip sunt.</p>
+      </div>
+      <div class="feature-card feature-card--growth">
+        <h4 class="feature-card-title">Professional Growth</h4>
+        <p class="feature-card-text">Anim reprehenderit sint voluptate exercitation adipisicing laborum adipisicing. Minim empor.</p>
+      </div>
+      <div class="feature-card feature-card--salary">
+        <h4 class="feature-card-title">Growing Salary</h4>
+        <p class="feature-card-text">Sit veniam aute dolore adipisicing nulla sit culpa. Minim mollit voluptate ullamco proident ea ad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal modal--subscribe" data-modal="careerSubscribe">
+  <div class="modal-wrap">
+    <h3 class="modal-title">Subscribe to our newsletter</h3>
+    <button type="button" class="modal-close" data-modal-close aria-label="Close modal">
+      <svg width="16" height="16" aria-hidden="true">
+        <use href="#icon-close"></use>
+      </svg>
+    </button>
+    <form class="modal-form" method="POST" action="/subscribe" data-subscribe-form>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="type" value="modal">
+      <label>
+        <span class="form-label">Name*</span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          class="form-input"
+        />
+      </label>
+      <label>
+        <span class="form-label">Email*</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your working email"
+          class="form-input"
+        />
+      </label>
+      <button type="submit" class="btn btn--filled btn--sm modal-btn">send</button>
+    </form>
+  </div>
+</div>
+<div class="modal modal--cv" data-modal="careerCv">
+  <div class="modal-wrap">
+    <h3 class="modal-title">Send your CV</h3>
+    <button type="button" class="modal-close" data-modal-close aria-label="Close modal">
+      <svg width="16" height="16" aria-hidden="true">
+        <use href="#icon-close"></use>
+      </svg>
+    </button>
+    <form class="modal-form" method="POST" enctype="multipart/form-data" action="/career-application" data-application-form>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label>
+        <span class="form-label">Name*</span>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          class="form-input"
+        />
+      </label>
+      <label>
+        <span class="form-label">Location*</span>
+        <div class="form-select-wrapper">
+          <select name="city" class="form-select" >
+            <option value="" selected disabled>Choose your location</option>
+            <option value="New York">New York</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="San Francisco">San Francisco</option>
+          </select>
+        </div>
+      </label>
+      <label>
+        <span class="form-label">Phone*</span>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Your phone number"
+          class="form-input"
+        />
+      </label>
+      <label>
+        <span class="form-label">Email*</span>
+        <input
+          type="email"
+          name="email"
+          placeholder="Your working email"
+          class="form-input"
+        />
+      </label>
+      <label>
+        <span class="form-label">Attach your CV*</span>
+        <input name="cv_file" type="file" class="form-file"/>
+      </label>
+      <label>
+        <span class="form-label">Сovering letter</span>
+        <textarea
+          name="message"
+          placeholder="Your covering letter"
+          class="form-textarea form-textarea--modal"
+        ></textarea>
+      </label>
+      <button type="submit" class="btn btn--filled btn--sm modal-btn">send</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

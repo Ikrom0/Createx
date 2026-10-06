@@ -1,0 +1,23 @@
+@use "../base/variables" as *;
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      color: $gray-700;
+      transition: color .2s ease-in;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+

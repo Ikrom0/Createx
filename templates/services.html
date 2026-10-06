@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Services
+{% endblock %}
+
+{% block body %}
+<section class="hero hero--services">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">Services</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">SERVICES</h1>
+      <p class="hero__text">
+        If you are looking for a full-service construction company, look
+        to Createx Construction Bureau. We are doing our best to be a partner
+        for all of your construction needs.
+      </p>
+    </div>
+  </div>
+</section>
+<section class="services-list">
+  <div class="container">
+    <h2 class="visually-hidden">Services</h2>
+    <ul>
+      {% for slug, title in services.items() %}
+      <li class="services-list__item">
+        <div class="services-list__img">
+          <img
+            src="{{ url_for('static', filename='images/services/' ~ loop.index ~ '.jpg' ) }}"
+            alt="" width="575" height="420" class="rounded-4"
+          />
+        </div>
+        <div class="services-list__content">
+          <h3 class="services-list__title">{{ title }}</h3>
+          <p class="services-list__text">Eleifend orci massa et facilisis orci feugiat ac. Congue in ut lacus, turpis accumsan gravida. Aliquet mattis dignissim massa sociis a, id bibendum. Egestas lorem eros, mi cras amet, vel eget molestie. Turpis enim arcu, amet donec massa pellentesque nulla duis. Arcu dictum metus sed purus senectus faucibus eget elementum pretium.</p>
+          <a href="{{ url_for('service', slug=slug) }}" class="btn btn--sm btn--clear">Learn more</a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}
+
+
+

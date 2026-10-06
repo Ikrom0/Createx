@@ -1,0 +1,166 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.gallery {
+  position: relative;
+  padding: 96px 0 48px;
+
+  &::after {
+    position: absolute;
+    top: 48px;
+    right: -482px;
+    width: 854px;
+    height: 822px;
+    background: url("@images/bg/project.png") center/contain no-repeat;
+    transform: rotate(180deg);
+    opacity: 0.12;
+    pointer-events: none;
+
+    @include bp(md) {
+      content: "";
+    }
+  }
+
+  @include bp(md) {
+    padding: 144px 0;
+  }
+}
+
+.gallery__title {
+  margin-bottom: 24px;
+  font-size: calc(1.525rem + 3.3vw);
+  line-height: 120%;
+
+  @include bp(xs) {
+    margin-bottom: 48px;
+  }
+
+  @include bp(sm) {
+    margin-bottom: 64px;
+    font-size: 64px;
+  }
+}
+
+.gallery__controls {
+  display: flex;
+}
+
+.gallery__thumbs {
+  margin: 10px 0 48px;
+
+  & .swiper-slide {
+    max-width: 50px;
+    opacity: 0.5;
+    cursor: pointer;
+
+    @include bp(xs) {
+      max-width: 100px;
+    }
+  }
+
+  & .swiper-slide-thumb-active { opacity: 1; }
+
+  @include bp(sm) {
+    margin: 20px 0 72px;
+  }
+
+  @include bp(md) {
+    margin-bottom: 100px;
+  }
+}
+
+.gallery__info {
+  display: grid;
+  align-items: center;
+  gap: 30px;
+
+  @include bp(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp(md) {
+    gap: 135px;
+  }
+}
+
+.gallery__info-title {
+  margin-bottom: 20px;
+
+  @include bp(sm) {
+    margin-bottom: 40px;
+  }
+}
+
+.gallery__info-text {
+  white-space: pre-wrap;
+  color: $gray-800;
+  font-size: 18px;
+}
+
+.gallery__list {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px 32px;
+  line-height: 1.6;
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: $shadow-sm;
+
+  @include bp(xs) {
+    padding: 32px 48px;
+  }
+
+  & dt {
+    color: $gray-900;
+    font-weight: 700;
+  }
+
+  & dd {
+    color: $gray-700;
+  }
+}
+
+
+// Decision
+.decision {
+  padding: 48px 0;
+  background-color: $gray-200;
+
+  @include bp(md) {
+    padding-bottom: 0;
+  }
+}
+
+.decision__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.decision__img {
+  position: relative;
+  display: none;
+  margin-bottom: -48px;
+
+  @include bp(sm) {
+    flex: 1 1 300px;
+    display: block;
+  }
+}
+
+.decision__content {
+  flex: 1 1 350px;
+}
+
+.decision__title {
+  text-align: left;
+}
+
+.decision__list li {
+  margin-top: 20px;
+  padding-left: 26px;
+  color: $gray-800;
+  background: url("@images/icons/tick.png") left center no-repeat;
+}

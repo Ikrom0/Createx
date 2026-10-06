@@ -1,0 +1,29 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+
+.swiper-pagination {
+
+  @include bp(sm) {
+    display: none;
+  }
+
+  &.swiper-pagination-horizontal.swiper-pagination-bullets {
+    bottom: 0;
+
+    & .swiper-pagination-bullet { margin: 0 6px; }
+  }
+
+  &-bullet {
+    width: 30px;
+    height: 3px;
+    background: $gray-500;
+    opacity: 1;
+    border-radius: 4px;
+
+    &-active {
+      background: $gray-800;
+    }
+  }
+}
+

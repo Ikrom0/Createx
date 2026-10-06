@@ -1,0 +1,60 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Subscribers{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+
+  {% if subscribers %}
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Subscribers</h1>
+  </div>
+
+  <div class="admin-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for subscriber in subscribers %}
+          <tr>
+            <td>{{ subscriber.name or "—" }}</td>
+            <td>{{ subscriber.email }}</td>
+            <td>
+              <time datetime="{{ subscriber.created_at.strftime('%Y-%m-%d') }}">
+                {{ subscriber.created_at | format_date }}
+              </time>
+            </td>
+            <td>
+              <div class="admin-table__actions">
+                <form
+                  action="{{ url_for('admin.delete_subscriber', id=subscriber.id) }}"
+                  method="POST"
+                >
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                  <button type="submit" class="admin-table__delete-btn">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% else %}
+  <div class="admin-page__empty">
+    <h1 class="admin-page__title">No subscribers yet.</h1>
+    <p>New subscribers from your website will appear here.</p>
+  </div>
+  {% endif %}
+</section>
+
+{% endblock %}

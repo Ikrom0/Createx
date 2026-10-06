@@ -1,0 +1,22 @@
+<section class="partners {{ partners_mod }}">
+  <div class="container">
+    <header class="section-header">
+      <h2>{{ partners_title or "Supported by 12+ partners" }}</h2>
+      <p class="section-subtitle">{{ partners_subtitle }}</p>
+    </header>
+    <div class="swiper" id="{{ 'partners-about-slider' if partners_mod == 'partners--about' else 'partners-slider' }}">
+      <div class="swiper-wrapper">
+        {% for partner in partners %}
+        <div class="swiper-slide partners__logo">
+          <img class="partners__logo-gray"
+            src="{{ url_for('static', filename='images/partners/' ~ loop.index ~ '.svg') }}"
+            alt="{{ partner }}" width="120"
+          />
+          <img aria-hidden="true" class="partners__logo-color" 
+          src="{{ url_for('static', filename='images/partners/0' ~ loop.index ~ '.svg') }}" alt="" width="120">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

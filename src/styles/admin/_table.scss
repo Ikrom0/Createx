@@ -1,0 +1,58 @@
+@use "../base/variables" as *;
+
+
+.admin-table {
+  width: 100%;
+  overflow-x: auto;
+
+  border: 1px solid $gray-300;
+  box-shadow: $shadow-sm;
+  border-radius: 4px;
+}
+
+.admin-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  text-wrap: nowrap;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.admin-table th {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: $gray-600;
+
+  background-color: $gray-200;
+}
+
+.admin-table td {
+  border-top: 1px solid $gray-300;
+
+  a:hover {
+    color: $primary;
+  }
+}
+
+.admin-table__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.admin-table__delete-btn {
+  color: $error;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}

@@ -1,0 +1,293 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+// Offer
+.offer {
+  padding: 48px 0 72px;
+
+  @include bp(md) {
+    padding: 96px 0 144px;
+  }
+}
+
+.offer__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include bp(sm) {
+    flex-direction: row;
+  }
+
+  @include bp(lg) {
+    gap: 105px;
+  }
+}
+
+.offer__title {
+  margin-bottom: 20px;
+
+  @include bp(xs) {
+    margin-bottom: 40px;
+  }
+}
+
+.offer__img-wrapper {
+  flex: 1;
+
+  @include bp(sm) {
+    order: -1;
+  }
+}
+
+.offer__content {
+  flex: 1;
+} 
+
+
+// Plan
+.plan {
+  padding-bottom: 48px;
+
+  @include bp(md) {
+    padding-bottom: 96px;
+  }
+}
+
+.plan__header {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.plan__content {
+  position: relative;
+  padding-bottom: 48px;
+  overflow: visible;
+}
+
+.plan__item {
+  position: relative;
+  padding: 8px 16px;
+  user-select: none;
+
+  &:hover {
+    .plan__number {
+      color: $primary;
+
+      &::before, &::after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.plan__top {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  margin-bottom: 16px;
+}
+
+.plan__number {
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+
+  text-align: center;
+  color: $primary;
+  font-size: calc(1.4125rem + 1.95vw);
+  font-weight: 700;
+  line-height: 60px;
+  transition: color .2s ease-in;
+
+  @include bp(xs) {
+    color: $gray-400;
+  }
+
+  @include bp(lg) {
+    font-size: 46px;
+  }
+
+  &::before, &::after {
+    @include pseudo-center;
+    border-radius: 50%;
+  }
+
+  &::before {
+    width: 72px;
+    height: 72px;
+    background-color: rgba($primary, 0.12);
+    transition: opacity .3s ease-in;
+
+    @include bp(xs) {
+      opacity: 0;
+      width: 84px;
+      height: 84px;
+    }
+  }
+
+  &::after {
+    display: none;
+    opacity: 0;
+    width: 116px;
+    height: 116px;
+    background-color: rgba($primary, 0.08);
+    transition: opacity .4s ease-in;
+
+    @include bp(xs) {
+      display: block;
+    }
+  }
+
+}
+
+.plan__line {
+  width: 100%;
+  height: 1px;
+  background-image: linear-gradient(90deg, #dadbdd, #dadbdd 75%, transparent 75%, transparent 100%);
+  background-size: 10px 1px;
+}
+
+.plan__title {
+  margin-bottom: 8px;
+}
+
+.plan__text {
+  color: $gray-700;
+}
+
+
+// Profits
+.profits {
+  padding-top: 72px;
+  background-color: $gray-900;
+}
+
+.profits__title, .profits__subtitle {
+  color: #fff;
+}
+
+.profits__subtitle {
+  opacity: 0.6;
+}
+
+.profits__cards {
+  margin-bottom: 48px;
+
+  .feature-card {
+    &::after {
+      opacity: .4;
+    }
+
+    &-title, &-text {
+      color: #fff;
+    }
+
+    &-text {
+      opacity: .6;
+    }
+  }
+}
+
+.profits__btn {
+  position: relative;
+  top: 26px;
+  left: 50%;
+  width: 100%;
+  max-width: 326px;
+  transform: translateX(-50%);
+}
+
+
+// Pricing
+.pricing {
+  position: relative;
+  padding: 48px 0;
+  background-color: $gray-200;
+  overflow: hidden;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+
+  &::before {
+    @include bg-decor(lg, left, -710px);
+    transform: rotate(-50deg) scale(-1);
+  }
+}
+
+.pricing__table-wrapper {
+  overflow-x: auto;
+}
+
+.pricing__table {
+  position: relative;
+  width: 100%;
+  min-width: 900px;
+  padding: 32px 0;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid $gray-300;
+  box-shadow: $shadow-sm;
+  border-collapse: separate;
+  border-spacing: 0;
+  z-index: 10;
+}
+
+.pricing__table thead th {
+  padding-bottom: 24px;
+  color: $gray-900;
+  font-size: 24px;
+  font-weight: 700;
+
+  &:first-child {
+    padding-left: 24px;
+    text-align: left;
+    font-size: 18px;
+  }
+
+  & span {
+    display: block;
+    color: $gray-700;
+    font-size: 18px;
+  }
+}
+
+.pricing__table tbody tr:nth-child(odd) {
+  background-color: $gray-200;
+}
+
+.pricing__table tbody th, td {
+  padding: 16px 0;
+  color: $gray-800;
+  line-height: 1.6;
+}
+
+.pricing__table tbody th {
+  padding-left: 24px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.pricing__table tbody td {
+  text-align: center;
+
+  & img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.pricing__table tfoot td {
+  text-align: center;
+  padding-top: 32px;
+}
+
+.pricing__btn {
+  padding-inline: 24px;
+  font-size: 12px;
+  line-height: 36px;
+}

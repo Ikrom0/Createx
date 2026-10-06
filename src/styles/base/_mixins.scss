@@ -1,0 +1,62 @@
+@use "sass:math";
+@use "sass:map";
+@use "variables" as *;
+
+
+@mixin bp($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin pseudo-center {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin bg-decor($size, $side, $offset: 0, $rotate: 0deg, $top: 0, $scale: 1,) {
+  content: "";
+  position: absolute;
+  top: $top;
+
+  @if $side == left {
+    left: $offset;
+  } @else if $side == right {
+    right: $offset;
+  }
+
+  @if $size == sm {
+    width: 791.22px;
+    height: 637.48px;
+  } @else if $size == lg {
+    width: 1023.99px;
+    height: 825.01px;
+  }
+
+  background: url("@images/bg/bg-#{$size}.png") center/contain no-repeat;
+  transform: scaleY($scale) rotate($rotate);
+  opacity: 0.3;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@mixin vertical-divider {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba($gray-400, 0) 0%,
+    rgba($gray-400, .5) 10%,
+    $gray-400 45%,
+    $gray-400 55%,
+    rgba($gray-400, .5) 90%,
+    rgba($gray-400, 0) 100%
+  );
+}

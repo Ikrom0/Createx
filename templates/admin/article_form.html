@@ -1,0 +1,127 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+<div class="admin-page">
+    <div class="admin-page__header">
+      <div>
+        <h1 class="admin-page__title">{{ page_title }}</h1>
+        <p>{{ page_subtitle }}</p>
+      </div>
+    </div>
+    
+    <form
+      method="POST"
+      enctype="multipart/form-data"
+      action="{% if article %}
+                  {{ url_for('admin.edit_article', slug=article.slug) }}
+              {% else %}
+                  {{ url_for('admin.create_article') }}
+              {% endif %}"
+      class="admin-form"
+      data-article-form
+    >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="admin-form__row">
+            <label>
+                <span class="form-label">Title*</span>
+                <input 
+                    type="text" 
+                    name="title" 
+                    class="form-input" 
+                    placeholder="Your title"
+                    value="{{ title if title is defined else (article.title if article else '') }}"
+                >
+            </label>
+        
+            <label>
+                {% set category = category if category is defined else (article.category if article else '') %}
+                <span class="form-label">Category*</span>
+                <div class="form-select-wrapper">
+                    <select name="category" class="form-select">
+                        <option value="" selected disabled>Select Category</option>
+                        <option
+                            value="Company News"
+                            {% if category == "Company News" %}selected{% endif %}
+                        >
+                            Company News
+                        </option>
+            
+                        <option
+                            value="Innovation"
+                            {% if category == "Innovation" %}selected{% endif %}
+                        >
+                            Innovation
+                        </option>
+            
+                        <option
+                            value="Industry News"
+                            {% if category == "Industry News" %}selected{% endif %}
+                        >
+                            Industry News
+                        </option>
+            
+                        <option
+                            value="Expert Tips"
+                            {% if category == "Expert Tips" %}selected{% endif %}
+                        >
+                            Expert Tips
+                        </option>
+            
+                        <option
+                            value="Marketing"
+                            {% if category == "Marketing" %}selected{% endif %}
+                        >
+                            Marketing
+                        </option>
+            
+                    </select>
+                </div>
+            </label>
+        </div>
+
+        <div class="admin-form__row">
+            <label>
+                <span class="form-label">Small image{% if not article %}*{% endif %}</span>
+                <input type="file" name="image_sm" accept="image/*" class="form-file">
+            </label>
+        
+            <label>
+                <span class="form-label">Large image{% if not article %}*{% endif %}</span>
+                <input type="file" name="image_lg" accept="image/*" class="form-file">
+            </label>
+        </div>
+        
+        <div class="admin-form__row admin-form__row--lg">
+          <label>
+              <span class="form-label">Content*</span>
+              <textarea
+                  name="content"
+                  placeholder="Your text..."
+                  class="form-textarea form-textarea--admin"
+              >{{ content if content is defined else (article.content if article else '') }}</textarea>
+          </label>
+        </div>
+    
+        <div class="admin-form__actions">
+            <a
+                href="{{ url_for('admin.articles') }}"
+                class="btn btn--clear btn--sm"
+            >
+                Cancel
+            </a>
+        
+            <button type="submit" class="btn btn--filled btn--sm">
+                {% if article %}
+                    Save changes
+                {% else %}
+                    Create article
+                {% endif %}
+            </button>
+        </div>
+    
+    </form>
+</div>
+{% endblock %}

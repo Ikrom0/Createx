@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="http://localhost:5173/src/js/main.js"></script>
+  <title>Login</title>
+</head>
+<body>
+  <section class="login">
+    <div>
+      <header class="login__header">
+        <h1>Sign in</h1>
+        <p>Welcome back. Sign in to access your admin panel.</p>
+      </header>
+      <form method="POST" class="login__form" data-login-form novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  
+        <label>
+          <span class="form-label">Username*</span>
+          <input type="text" name="username" placeholder="Your username" class="form-input">
+        </label>
+  
+        <label>
+          <span class="form-label">Password*</span>
+          <input type="password" name="password" placeholder="Your password" class="form-input">
+        </label>
+        <button type="submit" class="btn btn--filled btn--sm">Sign in</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

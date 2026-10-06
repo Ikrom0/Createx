@@ -1,0 +1,16 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @include bp(sm) {
+    max-width: 1260px;
+
+    &--narrow {
+      max-width: 810px;
+    }
+  }
+}

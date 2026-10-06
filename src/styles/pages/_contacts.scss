@@ -1,0 +1,180 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.contacts {
+  padding: 48px 0;
+  
+  @include bp(md) {
+    padding: 96px 0;
+  }
+}
+
+.contacts__grid {
+  display: grid;
+  gap: 30px;
+
+  @include bp(sm) {
+     grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.contacts__img {
+  text-align: center;
+
+  @include bp(sm) {
+    grid-column: span 5;
+  }
+}
+
+.contacts__form {
+  line-height: 1.6;
+
+  @include bp(sm) {
+    grid-column: 6 / -1;
+  }
+
+  @include bp(md) {
+    grid-column: 7 / -1;
+  }
+}
+
+.contacts__fields {
+  display: grid;
+  gap: 24px 30px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contacts__field--lg {
+  @include bp(xs) {
+    grid-column: span 2;
+  }
+}
+
+.contacts__form-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  
+  @include bp(md) {
+    margin-top: 20px;
+  }
+}
+
+.contacts__form-radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contacts__form-bottom {
+  display: grid;
+  align-items: center;
+  gap: 15px;
+  margin-top: 40px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+
+// Offices
+.offices {
+  padding: 48px 0;
+  background: $gray-200;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+.offices__contacts {
+  display: grid;
+  row-gap: 30px;
+  
+  @include bp(sm) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.offices__contact {
+  position: relative;
+  width: 100%;
+
+  @include bp(sm) {
+    &:not(:last-child) {
+      &::after { @include vertical-divider; }
+    }
+  }
+}
+
+.offices__contact-inner {
+  max-width: 250px;
+  margin: 0 auto;
+  color: $gray-900;
+  line-height: 1.6;
+  text-align: center;
+
+  @include bp(sm) {
+    text-align: left;
+  }
+}
+
+.offices__contact-title {
+  margin-bottom: 24px;
+}
+
+.offices__contact-address {
+  margin-bottom: 4px;
+}
+
+a.offices__contact-link {
+  color: $primary;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primary-hover;
+    text-decoration: none;
+  }
+}
+
+.offices__details {
+  margin-top: 20px;
+
+  & li + li {
+    margin-top: 4px;
+  }
+}
+
+.offices__detail-label { color: $gray-700; }
+
+
+// Follow
+.follow {
+  padding: 48px 0 96px;
+  background: $gray-200;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+.follow__title {
+  text-align: center;
+}
+
+.follow__socials {
+  justify-content: center;
+  margin-top: 40px;
+  gap: 24px;
+
+  a {
+    width: 32px;
+    height: 32px;
+  }
+}
+

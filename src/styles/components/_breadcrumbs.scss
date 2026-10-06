@@ -1,0 +1,39 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.breadcrumbs {
+  margin-bottom: 28px;
+
+  @include bp(md) {
+    margin-bottom: 40px;
+  }
+}
+
+.breadcrumbs-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+.breadcrumbs-item {
+  flex-shrink: 0;
+  display: inline-block;
+  font-size: 14px;
+  color: $gray-600;
+
+  & + &::before {
+    content: "/";
+    margin: 0 8px;
+    color: $gray-600;
+  }
+}
+
+a.breadcrumbs-link {
+  color: $gray-800;
+
+  &:hover {
+    color: $primary;
+  }
+}
+

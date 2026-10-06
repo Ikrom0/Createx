@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}News{% endblock %}
+
+{% block body %}
+<section class="hero hero--news">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">News</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">NEWS</h1>
+      <p class="hero__text">Stay tuned with our news, expert tips and articles.</p>
+    </div>
+  </div>
+</section>
+<section class="news">
+  <div class="container">
+    <h2 class="section-header">Categories</h2>
+    <div class="news__filters-wrapper" data-simplebar>
+      <div class="news__filters">
+        <button class="news__filter news__filter--active" data-filter="all">All News</button>
+        <button class="news__filter" data-filter="Company News">Company News</button>
+        <button class="news__filter" data-filter="Innovation">Innovation</button>
+        <button class="news__filter" data-filter="Industry News">Industry News</button>
+        <button class="news__filter" data-filter="Expert Tips">Expert Tips</button>
+        <button class="news__filter" data-filter="Marketing">Marketing</button>
+      </div>
+    </div>
+    <div class="news__wrapper">
+      {% include 'partials/_news-cards.html' %}
+    </div>
+  </div>
+</section>
+{% endblock %}

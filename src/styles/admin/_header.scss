@@ -1,0 +1,19 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.admin-header {
+  padding: 16px;
+
+  @include bp(md) {
+    display: none;
+  }
+}
+
+.admin-header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+

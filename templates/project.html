@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ project.title }}
+{% endblock %}
+
+{% block body %}
+<section class="gallery">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+      <ol class="breadcrumbs-list">
+        <li class="breadcrumbs-item">
+          <a href="/" class="breadcrumbs-link">Homepage</a>
+        </li>
+        <li class="breadcrumbs-item">
+          <a href="{{ url_for('work')}}" class="breadcrumbs-link">Work</a>
+        </li>
+        <li class="breadcrumbs-item" aria-current="page">{{ project.title }}</li>
+      </ol>
+    </nav>
+    <h1 class="gallery__title">{{ project.title }}</h1>
+
+    <div class="swiper" id="gallery-slider">
+      <div class="swiper-wrapper">
+        {% for i in range(6) %}
+        <div class="swiper-slide">
+          <a href="{{ project.image_lg | image_url }}" class="gallery__item">
+            <img class="rounded-4" src="{{ project.image_lg | image_url }}" alt="{{ project.title }} gallery image">
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="slider-controls slider-controls--clear gallery__controls">
+        <button type="button" class="slider-btn slider-btn--prev" aria-label="Previous gallery image" aria-controls="gallery-slider">
+          <svg aria-hidden="true" width="18" height="12">
+            <use href="#icon-btn-prev"></use>
+          </svg>
+        </button>
+        <button type="button" class="slider-btn slider-btn--next" aria-label="Next gallery image" aria-controls="gallery-slider">
+          <svg aria-hidden="true" width="18" height="12">
+            <use href="#icon-btn-next"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <div class="swiper gallery__thumbs" id="gallery-thumbs">
+      <div class="swiper-wrapper">
+        {% for i in range(6) %}
+        <div class="swiper-slide">
+          <img class="rounded-4" src="{{ project.image_sm | image_url }}" alt="">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="gallery__info">
+      <div>
+        <h2 class="gallery__info-title">Project goal</h2>
+        <p class="gallery__info-text">{{ project.goal }}</p>
+      </div>
+      <dl class="gallery__list">
+        <dt>LOCATION</dt>
+        <dd>{{ project.address }}, {{ project.city }}</dd>
+        <dt>CLIENT</dt>
+        <dd>{{ project.client }}</dd>
+        <dt>ARCHITECT</dt>
+        <dd>{{ project.architect }}</dd>
+        <dt>SIZE</dt>
+        <dd>{{ project.size }} sq. feet</dd>
+        <dt>PRICE</dt>
+        <dd>
+            {% if project.price >= 1_000_000 %}
+                ${{ (project.price / 1_000_000)|round(1)|string|replace('.0', '') }} million
+            {% elif project.price >= 1_000 %}
+                ${{ (project.price / 1_000)|round(1)|string|replace('.0', '') }}k
+            {% else %}
+                ${{ project.price }}
+            {% endif %}
+        </dd>
+        <dt>COMPLETED</dt>
+        <dd>{{ project.date.strftime('%B %Y') }}</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+<section class="decision">
+  <div class="container">
+    <div class="decision__block">
+      <div class="decision__img">
+        <img src="{{ url_for('static', filename='images/others/decision.jpg') }}" alt="" loading="lazy" width="495" height="550" class="rounded-4">
+      </div>
+      <div class="decision__content">
+        <h2 class="section-header decision__title">Constructive decisions</h2>
+        <ul class="decision__list">
+          <li>Vitae ultrices ornare eu sed in est quisque duis id.</li>
+          <li>A fermentum in morbi pretium aliquam adipiscing donec tempus.</li>
+          <li>Mauris odio pellentesque commodo, diam.</li>
+          <li>Fermentum vestibulum est fermentum, egestas gravida scelerisque quis.</li>
+          <li>At pharetra libero blandit risus, fringilla sed commodo diam.</li>
+          <li>Integer ultricies viverra ut enim viverra ut.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set projects_title = "Similar projects" %}
+{% set projects_mod = "projects--project" %}
+{% include "partials/_projects-swiper.html" %}
+
+{% endblock %}

@@ -1,0 +1,42 @@
+<section class="review">
+  <div class="container">
+    <div class="review__content">
+      <div class="swiper-pagination"></div>
+      <div class="swiper review__slider" id="review-slider">
+        <header class="section-header">
+          <h2 class="review__title">What our clients are saying</h2>
+        </header>     
+        <div class="slider-controls review__controls">
+          <button type="button" class="slider-btn slider-btn--prev" aria-label="Previous review" aria-controls="review-slider">
+            <svg aria-hidden="true" width="18" height="12">
+              <use href="#icon-btn-prev"></use>
+            </svg>
+          </button>
+          <button type="button" class="slider-btn slider-btn--next" aria-label="Previous review" aria-controls="review-slider">
+            <svg aria-hidden="true" width="18" height="12">
+              <use href="#icon-btn-next"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="swiper-wrapper">
+          {% for i in range(3) %}
+          <div class="swiper-slide">
+            <div class="review__client">
+              <img
+                src="{{ url_for('static', filename='images/others/client-img.png')}}"
+                alt="Profile image" class="review__client-img"
+              />
+              <blockquote class="review__client-text">Eveniet molestias. Expedita porro doloremque sit at fugiat in animi obcaecati repellendus, quaerat quo soluta quisquam adipisci odit error repudiandae dolorum accusamus vel?quaerat quo soluta quisquam adipisci</blockquote>
+              <p class="review__client-name">Daniel Brooks</p>
+              <p class="review__client-occupation">Position, Company name</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="review__img">
+        <img src="{{ url_for('static', filename='images/others/review.jpg')}}" alt="" loading="lazy" width="495" height="550" class="rounded-4"/>
+      </div>
+    </div>
+  </div>
+</section>

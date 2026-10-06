@@ -1,0 +1,72 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  background-color: rgba($gray-900, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .3s ease-in-out;
+  z-index: -1;
+  overflow-y: auto;
+  
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 1500;
+  }
+
+  &--subscribe {
+    align-items: center;
+  }
+
+  @include bp(xs) {
+    padding: 28px;
+  }
+}
+
+.modal-wrap {
+  position: relative;
+  margin: auto 0;
+  width: 100%;
+  max-width: 500px;
+  padding: 44px 24px 68px;
+  border: 1px solid $gray-300;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: $shadow-lg;
+  z-index: 10;
+
+  @include bp(sm) {
+    padding-inline: 48px;
+  }
+}
+
+.modal-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.modal-btn {
+  margin-top: 20px;
+}
+

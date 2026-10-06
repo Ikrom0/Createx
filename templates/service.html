@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ service }} | Service
+{% endblock %}
+
+{% block body %}
+<section class="hero hero--service">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item">
+            <a href="{{ url_for('services') }}" class="breadcrumbs-link">Services</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">{{ service }}</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">{{ service }}</h1>
+      <p class="hero__text">Dui augue nec mi mi. Ut ac lectus donec fames pellentesque. Laoreet aenean vulputate elementum blandit amet.</p>
+    </div>
+  </div>
+</section>
+<section class="offer">
+  <div class="container">
+    <div class="offer__grid">
+      <div class="offer__content">
+        <h2 class="offer__title">We offer</h2>
+        <div class="accordion" role="region" aria-label="Services list">
+          <div class="accordion-item">
+            <h3>
+              <button type="button" class="accordion-btn" aria-expanded="false">
+                {{ service }} of apartments
+              </button>
+            </h3>
+            <div class="accordion-content">
+              <p class="accordion-text">Adipiscing nunc arcu enim elit mattis eu placerat proin. Imperdiet elementum faucibus dignissim purus. Fusce parturient diam magna ullamcorper morbi semper massa ac facilisis.</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button type="button" class="accordion-btn" aria-expanded="false">
+                {{ service }} of private houses
+              </button>
+            </h3>
+            <div class="accordion-content">
+              <p class="accordion-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus omnis quis sed. Quam, neque quibusdam beatae dolore sint facere quia suscipit consequuntur magnam ipsam nobis temporibus quos fugiat id. Reprehenderit!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offer__img-wrapper">
+        <img src="{{ url_for('static', filename='images/others/offer.jpg') }}" alt="Interior Design" width="705" height="440" loading="lazy" class="rounded-4">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="plan">
+  <div class="container">
+    <h2 class="plan__header">That’s how we do it</h2>
+    <div class="swiper plan__content" id="plan-slider">
+      <div class="swiper-wrapper">
+        <div class="plan__item swiper-slide">
+          <div class="plan__top">
+            <span class="plan__number">01</span>
+            <span class="plan__line"></span>
+          </div>
+          <h4 class="plan__title">Work Estimate</h4>
+          <p class="plan__text">Culpa nostrud commodo ea consequat aliquip reprehenderit. Veniam velit nostrud aliquip sunt.</p>
+        </div>
+        <div class="plan__item swiper-slide">
+          <div class="plan__top">
+            <span class="plan__number">02</span>
+            <span class="plan__line"></span>
+          </div>
+          <h4 class="plan__title">Contract</h4>
+          <p class="plan__text">Anim reprehenderit sint voluptate exercitation adipisicing laborum adipisicing. Minim ad tempor.</p>
+        </div>
+        <div class="plan__item swiper-slide">
+          <div class="plan__top">
+            <span class="plan__number">03</span>
+            <span class="plan__line"></span>
+          </div>
+          <h4 class="plan__title">Mobilization</h4>
+          <p class="plan__text">Sit veniam aute dolore adipisicing nulla sit culpa. Minim mollit voluptate ullamco proident ea ad.</p>
+        </div>
+        <div class="plan__item swiper-slide">
+          <div class="plan__top">
+            <span class="plan__number">04</span>
+          </div>
+          <h4 class="plan__title">Construction Work</h4>
+          <p class="plan__text">Adipisicing esse aliqua aliquip qui amet. Aute eiusmod dolore dolore et ad et veniamad.</p>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+<section class="profits">
+  <div class="container">
+    <header class="section-header">
+      <h2 class="profits__title">Our benefits</h2>
+      <p class="section-subtitle profits__subtitle">Our mission is to set the highest standards for construction sphere.</p>
+    </header>
+    <div class="feature-cards profits__cards">
+      <div class="feature-card feature-card--contact">
+        <h4 class="feature-card-title">Fixed Terms & Cost</h4>
+        <p class="feature-card-text">Offers clear fixed terms and transparent costs, ensuring employees understand their commitments and benefits.</p>
+      </div>
+      <div class="feature-card feature-card--workers">
+        <h4 class="feature-card-title">Qualified Workers</h4>
+        <p class="feature-card-text">Our team consists of skilled professionals, carefully selected to ensure expertise and reliability in all tasks.</p>
+      </div>
+      <div class="feature-card feature-card--control">
+        <h4 class="feature-card-title">Supervision & Control</h4>
+        <p class="feature-card-text">Ensures thorough supervision and strict control over every project stage, maintaining quality and efficiency.</p>
+      </div>
+    </div>
+    <a href="{{ url_for('contacts') }}" class="btn btn--sm btn--filled profits__btn ">Discuss a project</a>
+  </div>
+</section>
+
+{% set projects_title = "Related projects" %}
+{% set projects_mod = "projects--service" %}
+{% include "partials/_projects-swiper.html" %}
+
+<section class="pricing">
+  <div class="container">
+    <header class="section-header">
+      <h2>Pricing</h2>
+      <p class="section-subtitle">We offer you three categories of construction.</p>
+    </header>
+    <div class="pricing__table-wrapper">
+      <table class="pricing__table">
+        <caption class="visually-hidden">Pricing comparison table of Basic, Standard and Business packages</caption>
+        <thead>
+          <tr>
+            <th scope="col">Items</th>
+            <th scope="col">BASIC<span>$20 per m2</span>
+            </th>
+            <th scope="col">STANDARD<span>$30 per m2</span></th>
+            <th scope="col">BUSINESS<span>$40 per m2</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Installation plan</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Planning solutions (2-3 options)</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Lighting plan</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Flooring plan</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Heating floor laying scheme</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Air conditioner zones layout</th>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3D visualization of all rooms</th>
+            <td>simplified</td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Visualization of each room (3-4 angles)</th>
+            <td aria-label="Not included"></td>
+            <td aria-label="Not included"></td>
+            <td>
+              <img src="{{ url_for('static', filename='images/icons/mark.png') }}" width="20" height="14" alt="Included">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Terms</th>
+            <td>10 days</td>
+            <td>20 days</td>
+            <td>30 days</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td aria-label="-"></td>
+            <td>
+              <button aria-label="Send request for Basic" class="btn btn--sm btn--clear pricing__btn">send request</button>
+            </td>
+            <td>
+              <button aria-label="Send request for Standard" class="btn btn--sm btn--clear pricing__btn">send request</button>
+            </td>
+            <td>
+              <button aria-label="Send request for Business" class="btn btn--sm btn--clear pricing__btn">send request</button>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+{% set partners_mod = "partners--service" %}
+{% include "partials/_partners.html" %}
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ request_item.name }}'s request{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+  <div class="admin-details">
+
+    <div class="admin-page__header">
+      <div>
+        <h1 class="admin-page__title">{{ request_item.name }}</h1>
+        <p>Request details</p>
+      </div>
+
+      <time datetime="{{ request_item.created_at.strftime('%Y-%m-%d') }}">
+        {{ request_item.created_at | format_date }}
+      </time>
+    </div>
+    
+    <div class="admin-details__block">
+      <div class="admin-details__info">
+        <div class="admin-details__field">
+          <span>Type</span>
+          <p>{{ request_item.type }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Name</span>
+          <p>{{ request_item.name }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Phone</span>
+          <p>{{ request_item.phone }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Email</span>
+          <p>{{ request_item.email }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Category</span>
+          <p>{{ request_item.category }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Location</span>
+          <p>{{ request_item.city }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Preferred contact method</span>
+          <p>{{ request_item.contact }}</p>
+        </div>
+      </div>
+  
+      <div class="admin-details__message">
+        <span>Message</span>
+        <p>{{ request_item.message }}</p>
+      </div>
+    </div>
+
+    <div class="admin-details__actions">
+      <a href="{{ url_for('admin.requests') }}">Back to requests</a>
+
+      <form
+        action="{{ url_for('admin.delete_request', id=request_item.id) }}"
+        method="POST"
+      >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="btn btn--sm btn--danger">Delete</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

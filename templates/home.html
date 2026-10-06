@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<section class="intro">
+  <div class="container">
+    <div class="intro__content">
+      <div class="intro__grid">
+        <div class="intro__top">
+          <div>
+            <h3 class="intro__subtitle">Over 20 years leader in</h3>
+            <h1 class="intro__title">Construction <br>business</h1>
+            <a href="{{ url_for('work') }}" class="btn btn--filled btn--md intro__top-btn">explore our projects</a>
+          </div>
+          <div class="socials intro__socials">
+            <a href="#!" aria-label="Facebook">
+              <svg aria-hidden="true" width="20" height="20">
+                <use href="#icon-facebook"></use>
+              </svg>
+            </a>
+            <a href="#!" aria-label="Twitter">
+              <svg aria-hidden="true" width="20" height="20">
+                <use href="#icon-twitter"></use>
+              </svg>
+            </a>
+            <a href="#!" aria-label="Youtube">
+              <svg aria-hidden="true" width="20" height="20">
+                <use href="#icon-youtube"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="intro__slider-wrapper">
+          <div class="swiper" id="intro-slider">
+            <div class="swiper-wrapper">
+              {% for i in range(1, 5) %}
+              <div class="swiper-slide">
+                <img src="{{ url_for('static', filename='images/slides/home/' ~ i ~ '.jpg')}}" alt="" class="rounded-4">
+              </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-pagination intro__pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div class="intro__cta">
+        <p class="intro__cta-text">Are you looking for a reliable construction company to make your dream come true? Createx Construction Bureau is your best choice.</p>
+        <a href="{{ url_for('work') }}" class="btn btn--filled btn--md intro__cta-btn">explore our projects</a>
+        <div class="slider-controls intro__controls">
+          <button type="button" class="slider-btn slider-btn--prev" aria-controls="intro-slider" aria-label="Previous intro slide">
+              <svg aria-hidden="true" width="18" height="12">
+                <use href="#icon-btn-prev"></use>
+              </svg>
+          </button>
+          <button type="button" class="slider-btn slider-btn--next" aria-controls="intro-slider" aria-label="Next intro slide">
+            <svg aria-hidden="true" width="18" height="12">
+              <use href="#icon-btn-next"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <p class="intro__career">
+        Become a part of the best team in the construction market of the USA. 
+        <a href="{{ url_for('career') }}">Available Positions</a>
+      </p>
+    </div>
+  </div>
+</section>
+<section class="video">
+  <div class="container">
+    <header class="section-header">
+      <h2>We are Createx Construction Bureau</h2>
+      <p class="section-subtitle">
+        We are rightfully considered to be the best construction company in
+        the USA.
+      </p>
+    </header>
+    <div class="video__wrapper rounded-4">
+      <img 
+        class="video__preview" 
+        src="{{ url_for('static', filename='images/video/preview.jpg') }}" 
+        alt="Video preview"
+      />
+
+      <video class="video__media" controls muted playsinline preload="none">
+        <source src="{{ url_for('static', filename='images/video/01.mp4') }}" type="video/mp4">
+        <source src="{{ url_for('static', filename='images/video/02.mp4') }}" media="(max-width: 768px)" type="video/mp4">
+        Your browser does not support the video
+      </video>
+      <button type="button" class="video__btn" aria-label="Play video">
+      </button>
+    </div>
+  </div>
+</section>
+<section class="values">
+  <div class="container">
+    <header class="section-header">
+      <h2>Our core values</h2>
+      <p class="section-subtitle">Our mission is to set the highest standards for construction sphere.</p>
+    </header>
+    <div class="feature-cards">
+      <div class="feature-card feature-card--quality">
+        <h4 class="feature-card-title">Quality</h4>
+        <p class="feature-card-text">We deliver reliable construction solutions with a strong focus on quality and precise execution.</p>
+      </div>
+
+      <div class="feature-card feature-card--safety">
+        <h4 class="feature-card-title">Safety</h4>
+        <p class="feature-card-text">We prioritize safety on every project, ensuring all procedures meet strict standards.</p>
+      </div>
+
+      <div class="feature-card feature-card--comfort">
+        <h4 class="feature-card-title">Comfort</h4>
+        <p class="feature-card-text">We ensure maximum comfort in every project, creating spaces that are functional and enjoyable.</p>
+      </div>
+    </div>
+    <div class="values__form-wrapper">
+      <h3 class="values__form-title">Want to know more? Ask us a question:</h3>
+      <form method="POST" class="values__form" action="/request" data-request-form>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="type" value="values">
+        <label class="values__form-item">
+          <span class="form-label">Name*</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            class="form-input"
+            
+          />
+        </label>
+        <label class="values__form-item">
+          <span class="form-label">Phone*</span>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Your phone"
+            class="form-input"
+          
+          />
+        </label>
+        <label class="values__form-item values__form-item--lg">
+          <span class="form-label">Message*</span>
+          <textarea
+            name="message"
+            placeholder="Your message"
+            class="form-textarea"
+          ></textarea>
+        </label>
+        <button type="submit" class="btn btn--sm btn--filled">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="services">
+  <div class="container">
+    <header class="section-header">
+      <h2>Our services</h2>
+      <p class="section-subtitle">
+        Createx Construction Bureau is a construction giant with a full
+        range of construction services.
+      </p>
+    </header>
+    <div class="services__list">
+      <a href="{{ url_for('service', slug='construction') }}" class="services__card services__card--construction">
+        <div class="services__card-icon">
+          <svg aria-hidden="true" width="52" height="52">
+            <use href="#icon-construction"></use>
+          </svg>
+        </div>
+        <h4 class="services__card-title">Construction</h4>
+      </a>
+      <a href="{{ url_for('service', slug='project-development') }}" class="services__card services__card--development">
+        <div class="services__card-icon">
+          <svg aria-hidden="true" width="52" height="52">
+            <use href="#icon-development"></use>
+          </svg>
+        </div>
+        <h4 class="services__card-title">Project Development</h4>
+      </a>
+      <a href="{{ url_for('service', slug='interior-design') }}" class="services__card services__card--design">
+        <div class="services__card-icon">
+          <svg aria-hidden="true" width="52" height="52">
+            <use href="#icon-design"></use>
+          </svg>
+        </div>
+        <h4 class="services__card-title">Interior Design</h4>
+      </a>
+      <a href="{{ url_for('service', slug='repairs') }}" class="services__card services__card--repairs">
+        <div class="services__card-icon">
+          <svg aria-hidden="true" width="52" height="52">
+            <use href="#icon-repairs"></use>
+          </svg>
+        </div>
+        <h4 class="services__card-title">Repairs</h4>
+      </a>
+    </div>
+    <div class="explore-more">
+      <h3>Learn more about our services</h3>
+      <a href="{{ url_for('services') }}" class="btn btn--md btn--filled">View services</a>
+    </div>
+  </div>
+</section>
+
+{% set projects_title = "Browse our selected projects and learn more about our work" %}
+{% set projects_mod = "projects--home" %}
+{% include "partials/_projects-swiper.html" %}
+
+{% set partners_mod = "partners--home" %}
+{% include "partials/_partners.html" %}
+
+{% include 'partials/_review.html' %}
+
+<section class="facts">
+  <div class="container">
+    <header class="section-header">
+      <h2>Some facts and figures</h2>
+    </header>
+    <div class="swiper" id="facts-slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide facts__item">
+          <div class="facts__item-chart facts__item-chart--satisfied">
+            <span class="facts__item-num">98%</span>
+          </div>
+          <p class="facts__item-text">Totally satisfied clients</p>
+        </div>
+  
+        <div class="swiper-slide facts__item">
+          <div class="facts__item-chart facts__item-chart--experience">
+            <span class="facts__item-num">20</span>
+          </div>
+          <p class="facts__item-text">Years of experience</p>
+        </div>
+  
+        <div class="swiper-slide facts__item">
+          <div class="facts__item-chart facts__item-chart--hours">
+            <span class="facts__item-num">9452</span>
+          </div>
+          <p class="facts__item-text">Working hours spent</p>
+        </div>
+  
+        <div class="swiper-slide facts__item">
+          <div class="facts__item-chart facts__item-chart--success">
+            <span class="facts__item-num">100%</span>
+          </div>
+          <p class="facts__item-text">Succeeded projects</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "partials/_recent-news.html" %}
+{% endblock %}

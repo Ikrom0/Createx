@@ -1,0 +1,61 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.hero {
+  padding: 96px 0 48px;
+  background-color: $gray-200;
+  background-size: cover;
+  background-position: center top;
+
+  @include bp(md) {
+    min-height: 600px;
+    padding: 150px 0;
+  }
+
+  &--services {
+    background-image: url("@images/heroes/services.jpg");
+  }
+
+  &--service {
+    background-image: url("@images/heroes/service.jpg");
+  }
+
+  &--work {
+    background-image: url("@images/heroes/work.jpg");
+  }
+
+  &--about {
+    background-image: url('@images/heroes/about.jpg');
+  }
+
+  &--career {
+    background-image: url('@images/heroes/career.jpg');
+  }
+
+  &--news {
+    background-image: url('@images/heroes/news.jpg');
+  }
+
+  &--contacts {
+    background-image: url("@images/heroes/contacts.jpg");
+  }
+}
+
+.hero__content {
+  max-width: 600px;
+}
+
+.hero__title {
+  text-transform: uppercase;
+  color: $gray-900;
+  margin-bottom: 24px;
+}
+
+.hero__text {
+  color: $gray-700;
+  font-size: 20px;
+}
+
+
+

@@ -1,0 +1,60 @@
+@use '../base/variables' as *;
+@use "../base/mixins" as *;
+
+
+.admin-main {
+  min-width: 0;
+  padding: 20px;
+
+  @include bp(md) {
+    padding: 40px;
+    margin-left: 260px;
+  }
+}
+
+.admin-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-page__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  text-align: center;
+
+  @include bp(xs) {
+    text-align: left;
+    justify-content: space-between;
+  }
+}
+
+.admin-page__title {
+  font-size: calc(1.4125rem + 1.95vw);
+
+  @include bp(md) {
+    font-size: 46px;
+  }
+}
+
+.admin-page__empty {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  a {
+    color: $primary;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

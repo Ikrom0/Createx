@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="http://localhost:5173/src/js/main.js"></script>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-header__top">
+      <a href="{{ url_for('admin.dashboard') }}">
+        <img
+          src="{{ url_for('static', filename='images/icons/logo.png') }}"
+          alt="Createx"
+          width="130"
+          height="22"
+        >
+      </a>
+      <button class="burger" aria-label="Open menu" data-sidebar-open>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-overlay" data-sidebar-overlay></div>
+
+  <aside class="sidebar">
+    <a href="{{ url_for('admin.dashboard') }}" class="sidebar__logo">
+      <img src="{{ url_for('static', filename='images/icons/logo.png') }}" alt="Createx" width="130" height="22">
+    </a>
+    
+    <button type="button" class="sidebar__close" data-sidebar-close aria-label="Close Sidebar">
+      &times;
+    </button>
+
+    <nav class="sidebar__nav">
+
+      <div class="sidebar__nav-group">
+        <span class="sidebar__nav-title">Content</span>
+
+        <a href="{{ url_for('admin.articles') }}">Articles</a>
+        <a href="{{ url_for('admin.projects') }}">Projects</a>
+      </div>
+
+      <div class="sidebar__nav-group">
+        <span class="sidebar__nav-title">Inbox</span>
+
+        <a href="{{ url_for('admin.requests') }}">Requests</a>
+        <a href="{{ url_for('admin.comments') }}">Comments</a>
+        <a href="{{ url_for('admin.subscribers') }}">Subscribers</a>
+        <a href="{{ url_for('admin.careers') }}">Career applications</a>
+      </div>
+
+    </nav>
+
+    <div class="sidebar__footer">
+      <a href="{{ url_for('admin.logout') }}">Logout</a>
+    </div>
+
+  </aside>
+
+  <main class="admin-main">
+
+    {% block content %}
+    {% endblock %}
+
+  </main>
+
+  </div>
+</body>
+</html>

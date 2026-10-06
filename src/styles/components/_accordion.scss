@@ -1,0 +1,53 @@
+@use "../base/variables" as *;
+
+
+.accordion-item {
+  cursor: pointer;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  &--open {
+    .accordion-btn {
+      color: $primary;
+
+      &::before {
+        background-image: url("@images/icons/minus.png");
+      }
+    }
+  }
+}
+
+.accordion-btn {
+  display: flex;
+  margin-bottom: 12px;
+
+  text-align: left;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  transition: color .2s ease;
+
+  &::before {
+    flex-shrink: 0;
+    content: "";
+    margin-top: .25em;
+    margin-right: 18px;
+    width: 22px;
+    height: 22px;
+    background: url("@images/icons/plus.png") left center no-repeat;
+    transition: background-image .2s ease;
+  }
+}
+
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .3s ease;
+}
+
+.accordion-text {
+  padding-left: 42px;
+  color: $gray-700;
+}

@@ -1,0 +1,173 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+
+  <div class="admin-page__header">
+    <div>
+      <h1 class="admin-page__title">Dashboard</h1>
+      <p>Overview of your website activity.</p>
+    </div>
+  </div>
+
+  <div class="dashboard__stats">
+
+    <a href="{{ url_for('admin.requests') }}" class="dashboard__stat">
+      <span>Requests</span>
+      <strong>{{ stats.requests }}</strong>
+    </a>
+
+    <a href="{{ url_for('admin.comments') }}" class="dashboard__stat">
+      <span>Comments</span>
+      <strong>{{ stats.comments }}</strong>
+    </a>
+
+    <a href="{{ url_for('admin.subscribers') }}" class="dashboard__stat">
+      <span>Subscribers</span>
+      <strong>{{ stats.subscribers }}</strong>
+    </a>
+
+    <a href="{{ url_for('admin.careers') }}" class="dashboard__stat">
+      <span>Career apps</span>
+      <strong>{{ stats.career_applications }}</strong>
+    </a>
+
+  </div>
+
+  <div class="dashboard__content">
+
+    <section class="dashboard__section">
+
+      <div class="dashboard__section-header">
+        <h2>Latest requests</h2>
+
+        <a href="{{ url_for('admin.requests') }}">
+          View all
+        </a>
+      </div>
+
+      {% if latest_requests %}
+
+        <div class="dashboard__list">
+
+          {% for request in latest_requests %}
+
+            <a
+              href="{{ url_for('admin.request_detail', id=request.id) }}"
+              class="dashboard__item"
+            >
+              <div>
+                <strong>{{ request.name }}</strong>
+                <span>{{ request.type | capitalize }}</span>
+              </div>
+
+              <time datetime="{{ request.created_at.strftime('%Y-%m-%d') }}">
+                {{ request.created_at | format_date }}
+              </time>
+            </a>
+
+          {% endfor %}
+
+        </div>
+
+      {% else %}
+
+        <p class="dashboard__empty">No requests yet.</p>
+
+      {% endif %}
+
+    </section>
+
+
+    <section class="dashboard__section">
+
+      <div class="dashboard__section-header">
+        <h2>Latest comments</h2>
+
+        <a href="{{ url_for('admin.comments') }}">
+          View all
+        </a>
+      </div>
+
+      {% if latest_comments %}
+
+        <div class="dashboard__list">
+
+          {% for comment in latest_comments %}
+
+            <div class="dashboard__item">
+              <div>
+                <strong>{{ comment.name }}</strong>
+                <span>{{ comment.article.title }}</span>
+              </div>
+
+              <time datetime="{{ comment.date.strftime('%Y-%m-%d') }}">
+                {{ comment.date | format_date }}
+              </time>
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+      {% else %}
+
+        <p class="dashboard__empty">No comments yet.</p>
+
+      {% endif %}
+
+    </section>
+
+
+    <section class="dashboard__section">
+
+      <div class="dashboard__section-header">
+        <h2>Latest applications</h2>
+
+        <a href="{{ url_for('admin.careers') }}">
+          View all
+        </a>
+      </div>
+
+      {% if latest_applications %}
+
+        <div class="dashboard__list">
+
+          {% for application in latest_applications %}
+
+            <a
+              href="{{ url_for('admin.career', id=application.id) }}"
+              class="dashboard__item"
+            >
+              <div>
+                <strong>{{ application.name }}</strong>
+                <span>{{ application.email }}</span>
+              </div>
+
+              <time datetime="{{ application.created_at.strftime('%Y-%m-%d') }}">
+                {{ application.created_at | format_date }}
+              </time>
+            </a>
+
+          {% endfor %}
+
+        </div>
+
+      {% else %}
+
+        <p class="dashboard__empty">
+          No career applications yet.
+        </p>
+
+      {% endif %}
+
+    </section>
+
+  </div>
+
+</section>
+
+{% endblock %}

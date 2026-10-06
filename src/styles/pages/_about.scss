@@ -1,0 +1,401 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.stats {
+  padding: 48px 0 96px;
+
+  @include bp(md) {
+    padding: 96px 0 144px; 
+  }
+}
+
+.stats__list {
+  display: grid;
+  justify-items: center;
+  gap: 30px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp(sm) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stats__item {
+  max-width: 260px;
+  padding-top: 68px;
+  text-align: center;
+  background-position: top;
+  background-repeat: no-repeat;
+
+  &--recomend {
+    background-image: url("@images/icons/ic-like-white.png");
+  }
+
+  &--renovate {
+    background-image: url("@images/icons/ic-painting.png");
+  }
+
+  &--specialists {
+    background-image: url("@images/icons/ic-helmet-white.png");
+  }
+
+  &--work {
+    background-image: url("@images/icons/ic-pantone.png");
+  }
+
+}
+
+.stats__item-title {
+  color: $primary;
+  font-size: calc(1.4125rem + 1.95vw);
+  line-height: 1.3;
+
+  @include bp(lg) {
+    font-size: 46px;
+  }
+}
+
+.stats__item-text {
+  color: $gray-700;
+  font-size: 14px;
+}
+
+
+// Quote
+.quote {
+  position: relative;
+  padding: 48px 0;
+
+  &::before {
+    @include bg-decor(lg, right, -400px, 62deg, 310px, -1);
+  }
+
+  @include bp(md) {
+    padding: 96px 0;
+  }
+
+}
+
+.quote__grid {
+  display: grid;
+  
+  @include bp(sm) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.quote__img {
+  position: relative;
+  margin: 0 auto;
+  z-index: -1;
+
+  @include bp(sm) {
+    grid-column: span 5;
+  }
+}
+
+.quote__card {
+  padding: 48px 16px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: $shadow-sm;
+
+  @include bp(xs) {
+    padding-inline: 24px;
+  }
+
+  @include bp(sm) {
+    grid-column: span 7;
+    transform: translate3d(-30px, -120px, 0);
+  }
+
+  @include bp(md) {
+    padding: 48px;
+  }
+}
+
+.quote__card-content {
+  padding-left: 38px;
+  background: url("/static/images/icons/braces.png") no-repeat top left / 21px 15px;
+
+  @include bp(xs) {
+    padding-left: 58px;
+    background-size: 28px 20px;
+  }
+}
+
+.quote__card-text {
+  margin-bottom: 40px;
+  color: $gray-800;
+  font-size: 20px;
+  font-weight: 700;
+
+  @include bp(xs) {
+    margin-bottom: 60px;
+  }
+}
+
+.quote__card-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.quote__card-name {
+  margin-bottom: 4px;
+  color: $gray-900;
+  font-weight: 700;
+}
+
+.quote__card-position {
+  color: $gray-700;
+  font-size: 14px;
+}
+
+.quote__card-sign {
+  width: 100px;
+  height: 68px;
+  margin-left: auto;
+  background: url("@images/icons/signature.png") center no-repeat;
+}
+
+
+// principles
+.principles {
+  padding: 48px 0;
+  background: $gray-200;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+
+// History
+.history {
+  padding: 48px 0 72px;
+  background: $gray-200;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+.history__header {
+  position: relative;
+
+  @include bp(xs) {
+    text-align: left;
+
+    .slider-controls {
+      display: flex;
+    }
+  }
+}
+
+.history__content {
+  display: grid;
+  gap: 48px;
+
+  @include bp(sm) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+.history__thumbs-wrapper {
+  min-width: 0;
+  
+  @include bp(sm) {
+    grid-column: span 4;
+    flex-direction: column;
+  }
+}
+
+.history__thumbs {
+  display: flex;
+  padding-bottom: 16px;
+
+  @include bp(sm) {
+    flex-direction: column;
+    padding: 0 15px;
+  }
+}
+
+.history__slider {
+  margin: 0;
+
+  @include bp(sm) { grid-column: span 8; }
+}
+
+.history__thumbs-item {
+  display: flex;
+  text-align: center;
+  color: $gray-600;
+  font-size: calc(1.3rem + 0.6vw);
+  font-weight: 600;
+  transition: color .25s ease-in-out;
+
+  &:hover, &--active, &:focus-visible { color: $primary; }
+
+  @include bp(sm) { text-align: left; }
+
+  @include bp(lg) { font-size: 28px; }
+
+}
+
+.history__thumbs-line {
+  position: relative;
+
+  @include bp(sm) {
+    width: 1px;
+    background-color: rgba($gray-600, .4);
+
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &::before {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $gray-200;
+  }
+
+  &::after {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    transition: background-color .25s ease-in-out;
+  }
+}
+
+.history__thumbs-text {
+  padding: 10px 24px;
+
+  @include bp(sm) {
+    padding: 10px 30px;
+  }
+}
+
+.history__slider-text {
+  margin-top: 30px;
+  color: $gray-800;
+}
+
+
+// Team
+.team {
+  position: relative;
+  padding: 48px 0 72px;
+
+  &::before {
+    @include bg-decor(sm, left, -480px, -126.97deg, 800px, -1);
+  }
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+.team__grid {
+  display: grid;
+  gap: 30px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp(md) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.team__card:hover .team__card-links {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.team__card-img {
+  position: relative;
+  overflow: hidden;
+
+  img { width: 100%; }
+}
+
+.team__card-links {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  padding: 20px 0;
+  background: rgba($primary, 0.7);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .35s ease, opacity .35s ease;
+
+  a {
+    width: 32px;
+    height: 32px;
+    
+    svg {
+      color: #fff;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.team__card-bottom {
+  background: #fff;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.team__card-name {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.team__card-position {
+  color: $gray-700;
+}
+
+.team__invite {
+  text-align: center;
+  margin-top: 60px;
+  color: $gray-900;
+  font-size: 18px;
+}
+
+a.team__invite-link {
+  color: $primary;
+  text-decoration: underline;
+
+  &:hover {
+    color: $primary-hover;
+    text-decoration: none;
+  }
+}
+
+// Map
+.map {
+  padding: 72px 0 48px;
+  background-color: $gray-200;
+
+  @include bp(md) { padding-bottom: 96px; }
+}

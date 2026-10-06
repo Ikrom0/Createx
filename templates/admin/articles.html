@@ -1,0 +1,70 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<section class="admin-page">
+
+  {% if articles %}
+  
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Articles</h1>
+  
+    <a href="{{ url_for('admin.create_article') }}" class="btn btn--filled btn--sm">
+      Create article
+    </a>
+  </div>
+
+  <div class="admin-table">
+    <table>
+
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for article in articles %}
+        <tr>
+          <td><a href="{{ url_for('article', slug=article.slug) }}" target="_blank">{{ article.title }}</a></td>
+          <td>{{ article.category }}</td>
+          <td>            
+            <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">
+              {{ article.date | format_date }}
+            </time>
+          </td>
+
+          {% if article.slug != 'how-to-build-climate-change-resilient-infrastructure' %}
+          <td>
+            <div class="admin-table__actions">
+              <a href="{{ url_for('admin.edit_article', slug=article.slug) }}">Edit</a>
+              <form action="{{ url_for('admin.delete_article', id=article.id) }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="admin-table__delete-btn">Delete</button>
+              </form>
+            </div>
+          </td>
+          {% else %}
+          <td></td>
+          {% endif %}
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+  </div>
+
+  {% else %}
+  <div class="admin-page__empty">
+    <h1 class="admin-page__title">No article yet.</h1>
+    <p>You haven't added any articles yet. <a href="{{ url_for('admin.create_article') }}">Add your first article</a></p>
+  </div>
+  {% endif %}
+
+</section>
+{% endblock %}

@@ -1,0 +1,80 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.review {
+  padding: 64px 0 48px;
+  background-color: $gray-200;
+  z-index: 10;
+  
+  @include bp(sm) {
+    padding-bottom: 0;
+  }
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+.review__content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 35px;
+
+  @include bp(lg) { padding: 0; }
+}
+
+.review__title {
+  @include bp(sm) { text-align: left; }
+}
+
+.review__controls {
+  bottom: unset;
+  
+  @include bp(sm) { display: flex; }
+}
+
+.review__slider {
+  text-align: center;
+
+  @include bp(sm) {
+    flex: 1 1 350px;
+    text-align: left;
+  }
+}
+
+.review__img {
+  display: none;
+  margin-bottom: -48px;
+  text-align: end;
+
+  @include bp(sm) {
+    flex: 1 1 300px;
+    display: block;
+  }
+}
+
+.review__client-img {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+}
+
+.review__client-text {
+  margin-bottom: 24px;
+  color: $gray-800;
+}
+
+.review__client-name {
+  margin-bottom: 4px;
+  color: $gray-900;
+  font-weight: 700;
+}
+
+.review__client-occupation {
+  color: $gray-700;
+  font-size: 14px;
+}

@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ application.name }}'s application{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+  <div class="admin-details">
+    <div class="admin-page__header">
+      <div>
+        <h1 class="admin-page__title">{{ application.name }}</h1>
+        <p>Application details</p>
+      </div>
+
+      <time datetime="{{ application.created_at.strftime('%Y-%m-%d') }}">
+        {{ application.created_at | format_date }}
+      </time>
+    </div>
+
+    <div class="admin-details__block">
+      <div class="admin-details__info">
+        <div class="admin-details__field">
+          <span>Name</span>
+          <p>{{ application.name }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Location</span>
+          <p>{{ application.city }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Phone</span>
+          <p>{{ application.phone }}</p>
+        </div>
+  
+        <div class="admin-details__field">
+          <span>Email</span>
+          <p>{{ application.email }}</p>
+        </div>
+      </div>
+  
+      {% if application.message %}
+        <div class="admin-details__message">
+          <span>Message</span>
+          <p>{{ application.message }}</p>
+        </div>
+      {% endif %}
+  
+      {% if application.cv_file %}
+        <div class="admin-details__file">
+          <div>
+            <span>CV</span>
+            <p>Applicant's CV</p>
+          </div>
+  
+          <a
+            href="{{ url_for('admin.download_cv', id=application.id) }}"
+            target="_blank"
+          >
+            Open CV
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="admin-details__actions">
+      <a href="{{ url_for('admin.careers') }}">Back to applications</a>
+
+      <form
+        action="{{ url_for('admin.delete_career', id=application.id) }}"
+        method="POST"
+      >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="btn btn--danger btn--sm">Delete</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

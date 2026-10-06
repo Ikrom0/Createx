@@ -1,0 +1,46 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.discuss {
+  padding: 80px 0;
+  background: url("@images/others/discuss.jpg") center/cover no-repeat;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.discuss__form-wrapper {
+  margin: 0 auto;
+  max-width: 495px;
+  padding: 48px 20px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: $shadow-lg;
+
+  @include bp(sm) {
+    margin-right: 0;
+  }
+
+  @include bp(xs) {
+    padding-inline: 40px;
+  }
+}
+
+.discuss__title {
+  text-align: center;
+}
+
+.discuss__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.discuss__form-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

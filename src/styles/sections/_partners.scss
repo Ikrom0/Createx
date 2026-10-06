@@ -1,0 +1,54 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.partners {
+  padding: 48px 0;
+
+  &--home,
+  &--service {
+    background: $gray-200;
+  }
+
+  &--home {
+    @include bp(md) { padding: 96px 0 72px; }
+  }
+
+  &--service {
+    padding-top: 16px;
+    @include bp(md) { padding-bottom: 96px; }
+  }
+
+  &--work {
+    @include bp(sm) { padding-top: 96px; }
+    @include bp(md) { padding: 144px 0 96px; }
+  }
+
+  &--about {
+    padding-bottom: 24px;
+    @include bp(sm) { padding-bottom: 48px; }
+    @include bp(md) { padding-top: 96px; }
+  }
+}
+
+.partners__logo {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    .partners__logo-color { opacity: 1}
+    .partners__logo-gray { opacity: 0}
+  }
+}
+
+.partners__logo-gray,
+.partners__logo-color {
+  grid-area: 1 / 1;
+  transition: opacity .3s ease-in-out;
+}
+
+.partners__logo-color {
+  opacity: 0;
+}
+

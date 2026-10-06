@@ -1,0 +1,68 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Requests{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+  
+  {% if requests %}
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Requests</h1>
+  </div>
+
+  <div class="admin-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for request in requests %}
+          <tr>
+            <td>{{ request.name }}</td>
+            <td>{{ request.type }}</td>
+            <td>{{ request.phone }}</td>
+            <td>{{ request.email or "—" }}</td>
+            <td>
+              <time datetime="{{ request.created_at.strftime('%Y-%m-%d') }}">
+                {{ request.created_at | format_date }}
+              </time>
+            </td>
+            <td>
+              <div class="admin-table__actions">
+                <a href="{{ url_for('admin.request_detail', id=request.id) }}">
+                  View
+                </a>
+
+                <form
+                  action="{{ url_for('admin.delete_request', id=request.id) }}"
+                  method="POST"
+                >
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                  <button type="submit" class="admin-table__delete-btn">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% else %}
+  <div class="admin-page__empty">
+    <h1 class="admin-page__title">No requests yet.</h1>
+    <p>New requests from your website will appear here.</p>
+  </div>
+  {% endif %}
+</section>
+
+{% endblock %}

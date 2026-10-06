@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+Work
+{% endblock %}
+
+{% block body %}
+<section class="hero hero--work">
+  <div class="container">
+    <div class="hero__content">
+      <nav class="breadcrumbs" aria-label="Breadcrumbs navigation">
+        <ol class="breadcrumbs-list">
+          <li class="breadcrumbs-item">
+            <a href="/" class="breadcrumbs-link">Homepage</a>
+          </li>
+          <li class="breadcrumbs-item" aria-current="page">Work</li>
+        </ol>
+      </nav>
+      <h1 class="hero__title">OUR WORK</h1>
+      <p class="hero__text">
+        Our portfolio represents 20 years of construction experience
+        backed by a passion for perfect client service, quality and
+        innovations in consctuction industry.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include "partials/_projects-list.html" %}
+
+{% include 'partials/_review.html' %}
+
+{% set partners_title = "Our clients" %}
+{% set partners_mod = "partners--work" %}
+{% include 'partials/_partners.html' %}
+
+{% endblock %}

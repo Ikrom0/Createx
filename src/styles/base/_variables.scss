@@ -1,0 +1,39 @@
+// Colors
+$primary: #ff5a30;
+$primary-hover: #fc3300;
+$muted-white: rgba(rgb(255, 255, 255), 0.6);
+$error: #ff4d4f;
+$success: #2ecc71;
+$info: #2563eb;
+$gray-900: #1e212c;
+$gray-800: #424551;
+$gray-700: #787a80;
+$gray-600: #9a9ca5;
+$gray-500: #b3b7bc;
+$gray-400: #d7dadd;
+$gray-300: #e5e8ed;
+$gray-200: #f4f5f6;
+$gray-100: #f9f9f9;
+
+// Shadows
+$shadow-sm: 0 28px 30px rgba($gray-600, 0.08),
+  0 20px 16px rgba($gray-600, 0.05),
+  0 8px 10px rgba($gray-600, 0.04),
+  0 4px 4px rgba($gray-900, 0.03);
+$shadow-lg: 0 60px 80px -20px rgba($gray-900, 0.16),
+  0 26px 24px -10px rgba($gray-900, 0.10),
+  0 12px 10px -6px rgba($gray-900, 0.08),
+  0 4px 4px -4px rgba($gray-900, 0.05);
+$shadow-primary: 0 24px 30px rgba($primary, 0.16), 
+  0 20px 16px -4px rgba($primary, 0.10),
+  0 8px 10px rgba($primary, 0.08),
+  0 4px 4px rgba($gray-900, 0.05);
+
+// Breakpoints
+$breakpoints: (
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  lg: 1200px,
+  xl: 1400px
+);

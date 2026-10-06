@@ -1,0 +1,23 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Ubuntu", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: $gray-800;
+  background: #fff;
+}

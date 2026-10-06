@@ -1,0 +1,45 @@
+@use '../base/variables' as *;
+@use "../base/mixins" as *;
+
+
+.admin-form {
+  max-width: 800px;
+}
+
+.admin-form__title {
+  margin-bottom: 12px;
+  font-size: calc(1.3rem + 0.6vw);
+
+  @include bp(lg) {
+    font-size: 28px;
+  }
+}
+
+.admin-form__section + .admin-form__section{
+  margin-top: 24px;
+}
+
+.admin-form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px 24px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr 1fr;
+
+    &--lg {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  & + & {
+    margin-top: 12px;
+  }
+}
+
+.admin-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}

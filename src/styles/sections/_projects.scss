@@ -1,0 +1,255 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+
+.projects {
+  padding: 48px 0 72px;
+
+  &--home {
+    @include bp(sm) {
+      padding: 72px 0 96px;
+    }
+
+    @include bp(md) {
+      padding: 120px 0;
+    }
+  }
+
+  &--service {
+    padding-top: 72px;
+
+    @include bp(md) {
+      padding: 120px 0;
+    }
+  }
+
+  &--project {
+    @include bp(sm) {
+      padding-top: 96px;
+    }
+
+    @include bp(md) {
+      padding: 144px 0 120px;
+    }
+  }
+
+  &--work {
+    padding: 0 0 48px;
+
+    @include bp(md) {
+      padding-bottom: 96px;
+    }
+  }
+}
+
+.projects__header {
+  position: relative;
+}
+
+.projects__filter-wrapper {
+  padding: 48px 0 36px;
+  
+  @include bp(sm) {
+    padding-bottom: 48px;
+  }
+
+  @include bp(md) {
+    top: -95px;
+  }
+
+  .simplebar-track {
+    top: 0;
+  }
+}
+
+.projects__filters {
+  position: relative;
+  display: flex;
+  gap: 20px;
+}
+
+.projects__filter {
+  flex: 1 0 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 10px;
+
+  background-color: #fff;
+  box-shadow: $shadow-sm;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow:
+      0 28px 30px rgba($gray-600, 0.16),
+      0 20px 16px -4px rgba($gray-600, 0.10),
+      0 8px 10px rgba($gray-600, 0.08),
+      0 4px 4px rgba($gray-900, 0.05);
+  
+      .projects__filter-title {
+        color: $gray-800;
+      }
+    }
+  }
+
+  &--active {
+    pointer-events: none;
+    box-shadow: $shadow-primary;
+    background-color: $primary;
+    border-color: $primary;
+
+    & .projects__filter-title, & .projects__filter-icon {
+      color: #fff;
+    }
+  }
+}
+
+.projects__filter-title {
+  display: block;
+  margin-top: 16px;
+  color: $gray-600;
+  font-weight: 700;
+  line-height: 1.6;
+  transition: color .2s ease-in-out;
+}
+
+.projects__filter-icon {
+  color: $primary;
+  transition: color .2s ease-in-out;
+}
+
+.projects__load {
+  display: flex;   
+  justify-content: center;
+  margin-top: 60px;
+
+  &-btn {
+    display: flex;
+    gap: 16px;
+    color: $gray-800;
+    font-weight: 700;
+    line-height: 1.6;
+    transition: color .15s ease-in;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+.projects__slider {
+  padding-bottom: 45px;
+  overflow-y: visible;
+  overflow-x: clip;
+
+  @include bp(xs) {
+    padding-bottom: 0;
+  }
+}
+
+.projects__list {
+  display: grid;
+  gap: 30px;
+
+  @include bp(xs) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.projects__title {
+  text-align: center;
+  
+  @include bp(xs) {
+    width: 75%;
+    text-align: left;
+  }
+
+  @include bp(md) {
+    width: 55%;
+  }
+}
+
+.projects__controls {
+
+  @include bp(xs) {
+    display: flex;
+  }
+}
+
+.projects__pagination {
+
+  @include bp(xs) {
+    display: none;
+  }
+}
+
+.projects__card {
+  position: relative;
+  box-shadow: $shadow-sm;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow .2s ease-in;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+
+    .projects__card-img {
+      transform: scale(1.06) translateY(-32px);
+    }
+
+    .projects__card-footer {
+      transform: translateY(0);
+    }
+  }
+}
+
+.projects__card-img {
+  width: 100%;
+  transform: scale(1.06) translateY(-32px);
+  transition: transform .25s ease-in-out;
+  will-change: transform;
+
+  @include bp(sm) {
+    transform: unset;
+  }
+}
+
+.projects__card-footer {
+  width: 100%;
+  padding: 16px 20px 24px;
+  text-align: center;
+  background-color: #fff;
+  transition: transform .25s ease-in-out;
+  will-change: transform;
+  position: absolute;
+  bottom: 0;
+
+  @include bp(xs) {
+    transform: translateY(74px);
+  }
+}
+
+.projects__card-title {
+  margin-bottom: 4px;
+  font-size: 20px;
+}
+
+.projects__card-subtitle {
+  display: none;
+  color: $gray-700;
+  font-size: 14px;
+  margin-bottom: 24px;
+
+  @include bp(xs) {
+    display: block;
+  }
+}
+

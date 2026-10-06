@@ -1,0 +1,68 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+
+<section class="admin-page">
+  {% if projects %}
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Projects</h1>
+    <a href="{{ url_for('admin.create_project') }}" class="btn btn--filled btn--sm">
+      Create project
+    </a>
+  </div>
+
+  <div class="admin-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for project in projects %}
+        <tr>
+          <td>
+            <a href="{{ url_for('project', slug=project.slug) }}" target="_blank">{{ project.title }}</a>
+          </td>
+
+          <td>{{ project.category }}</td>
+
+          <td>{{ project.date | format_date }}</td>
+
+          {% if project.slug != 'modern-cottage' %}
+          <td>
+            <div class="admin-table__actions">
+              <a href="{{ url_for('admin.edit_project', slug=project.slug) }}">Edit</a>
+              <form action="{{ url_for('admin.delete_project', id=project.id) }}" method="POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="admin-table__delete-btn">Delete</button>
+              </form>
+            </div>
+          </td>
+          {% else %}
+          <td></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
+  {% else %}
+  
+    <div class="admin-page__empty">
+      <h1 class="admin-page__title">No projects yet</h1>
+      <p>You haven't added any projects yet. <a href="{{ url_for('admin.create_project') }}">Add your first project</a></p>  
+    </div>
+  
+  {% endif %}
+</section>
+
+
+{% endblock %}

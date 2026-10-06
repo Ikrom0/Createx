@@ -1,0 +1,149 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.career {
+  padding: 48px 0;
+
+  @include bp(md) {
+    padding-top: 96px;
+  }
+}
+
+/* layout */
+.career__content {
+  display: grid;
+  gap: 48px;
+
+  @include bp(md) {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* CTA */
+.career__cta {
+  text-align: center;
+
+  @include bp(md) {
+    grid-column: 9 / -1;
+    text-align: start;
+  }
+}
+
+.career__cta-title {
+  margin-bottom: 12px;
+
+  @include bp(md) {
+    margin-bottom: 24px;
+  }
+}
+
+.career__cta-text {
+  margin-bottom: 24px;
+  color: $gray-800;
+  font-size: 18px;
+
+  @include bp(md) {
+    margin-bottom: 48px;
+  }
+}
+
+.career__cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+  @include bp(md) {
+    justify-content: start;
+  }
+}
+
+/* vacancies list */
+.career__vacancies {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include bp(md) {
+    grid-column: span 7;
+  }
+}
+
+/* vacancy card */
+.career__vacancy {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 36px;
+  padding: 24px 24px 12px;
+  border-radius: 4px;
+  border: 1px solid $gray-300;
+  transition: box-shadow 0.2s ease-in;
+
+  &:hover {
+    box-shadow: $shadow-sm;
+  }
+
+  @include bp(xs) {
+    grid-template-columns: repeat(12, 1fr);
+    justify-items: start;
+    padding: 32px 48px;
+  }
+}
+
+.career__vacancy-content {
+  text-align: center;
+
+  @include bp(xs) {
+    grid-column: span 7;
+    text-align: start;
+  }
+}
+
+.career__vacancy-btn {
+  justify-self: center;
+
+  @include bp(xs) {
+    grid-column: 8 / -1;
+    justify-self: end;
+  }
+}
+
+.career__vacancy-meta {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 8px;
+  color: $gray-700;
+  font-size: 14px;
+
+  @include bp(xs) {
+    justify-content: start;
+  }
+}
+
+.career__vacancy-location,
+.career__vacancy-time {
+  padding-left: 22px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.career__vacancy-location {
+  background-image: url("@images/icons/location.png");
+}
+
+.career__vacancy-time {
+  background-image: url("@images/icons/clock-sm.png");
+}
+
+
+// Benefits
+.benefits {
+  padding: 48px 0 96px;
+
+  @include bp(md) {
+    padding: 96px 0 144px;
+  }
+}
+
