@@ -1,8 +1,8 @@
 import autoprefixer from 'autoprefixer'
 import { defineConfig } from 'vite'
-import { resolve } from 'path' 
+import { resolve } from 'path'
 
-export default defineConfig ({
+export default defineConfig({
 
   server: {
     origin: 'http://localhost:5173',
@@ -13,15 +13,21 @@ export default defineConfig ({
     assetsDir: "assets",
     emptyOutDir: true,
     target: "es2015",
-    
-    rollupOptions: { 
+
+    rollupOptions: {
       input: {
         main: "./src/js/main.js",
-        styles: "./src/styles/main.scss"
       },
       output: {
         entryFileNames: '[name].js',
-      }
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'main.css') {
+            return 'assets/main.css';
+          }
+
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
     }
   },
 
